@@ -1,6 +1,6 @@
 <?php
-include 'includes/db.php';
-include 'includes/header.php';
+include 'db.php';
+include 'header.php';
 
 $query = "SELECT * FROM productos";
 $result = mysqli_query($conn, $query);
@@ -21,6 +21,7 @@ $result = mysqli_query($conn, $query);
                 <h3><?= $row['nombre'] ?></h3>
                 <p><?= $row['descripcion'] ?></p>
                 <p>Precio: $<?= $row['precio'] ?></p>
+                <img src="img/<?php echo $row['imagen']; ?>" width="150">
                 <button onclick="agregarAlCarrito(<?= $row['id'] ?>)">Agregar al carrito</button>
             </div>
         <?php endwhile; ?>

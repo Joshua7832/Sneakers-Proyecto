@@ -1,6 +1,6 @@
 <?php
-include 'includes/db.php';
-include 'includes/header.php';
+include 'db.php';
+include 'header.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -14,3 +14,12 @@ include 'includes/header.php';
     <a href="productos.php">Ver Productos</a>
 </body>
 </html>
+
+<?php
+session_start();
+if (!isset($_SESSION['usuario'])) {
+    echo '<a href="login.html">Iniciar sesión</a>';
+} else {
+    echo 'Hola, ' . $_SESSION['usuario'] . ' | <a href="logout.php">Cerrar sesión</a>';
+}
+?>
