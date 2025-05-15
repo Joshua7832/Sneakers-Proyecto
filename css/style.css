@@ -1,8 +1,9 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+
     margin: 0;
     padding: 20px;
+    text-align: center;
 }
 .producto {
     background: white;
@@ -12,7 +13,7 @@ body {
 }
 body {
     font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
+    background-color: #7a7777;
 }
 
 .login-container {
@@ -52,4 +53,12 @@ button:hover {
 p {
     text-align: center;
     margin-top: 10px;
+}
+header{
+    color: snow;
+    border: solid white;
+    border-radius: 10px;
+}
+a{
+    color: bisque;
 }

@@ -1,1 +1,2 @@
-###Proyecto Para Bee Movie
+### Proyecto Para Bee Movie
+![< >](<img/bee.jpg>)

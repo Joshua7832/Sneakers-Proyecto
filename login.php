@@ -15,9 +15,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($usuario && password_verify($password, $usuario['password'])) {
         $_SESSION['usuario'] = $usuario['nombre'];
-        header("Location: index.php");
+
+        
+        if (strtolower($usuario['nombre']) === 'admin') {
+            header("Location: productos_crud.php"); 
+        } else {
+            header("Location: index.php");
+        }
+        exit();
     } else {
         echo "Usuario o contraseña incorrectos.";
     }
 }
 ?>
+

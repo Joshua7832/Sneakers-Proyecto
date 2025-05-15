@@ -6,11 +6,11 @@ include 'header.php';
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Tienda en Línea</title>
+    <title>Sneakers-Sait</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    <h1>Bienvenido a nuestra Tienda</h1>
+<body style="background-image:url(img/sneakers.jpg);">
+    <h1 style="color: #7a7777;">Bienvenido a nuestra Tienda</h1>
     <a href="productos.php">Ver Productos</a>
 </body>
 </html>
