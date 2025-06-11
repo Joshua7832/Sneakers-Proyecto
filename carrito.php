@@ -10,7 +10,8 @@ include 'db.php';
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Carrito de Compras</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
   <style>
     * {
       box-sizing: border-box;
@@ -107,7 +108,7 @@ include 'db.php';
         echo '<td>$' . number_format($producto['precio'], 2) . '</td>';
         echo '<td>' . $producto['cantidad'] . '</td>';
         echo '<td>$' . number_format($subtotal, 2) . '</td>';
-        echo '<td><a class="delete-btn" href="eliminar_carrito.php?id=' . $id . '" onclick="return confirm(\'¿Eliminar este producto?\')">Borrar</a></td>';
+        echo '<td><a class="delete-btn" href="eliminar_carrito.php?id=' . $id . '" onclick="return confirm(\'¿Eliminar este producto?\')"><i class="bi bi-trash3"></i></a></td>';
         echo '</tr>';
       }
 

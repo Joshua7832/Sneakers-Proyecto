@@ -1,6 +1,6 @@
 <?php
+session_start();
 include 'db.php';
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -16,26 +16,32 @@ include 'db.php';
     <header>
         <div class="logo">Sneakers Sait</div>
         <nav>
-            <a href="index.php">Inicio</a>
-            <a href="productos.php">Productos</a>
-            <a href="carrito.php">Carrito</a>
-            <a href="login.php">Login</a>
-        </nav>
+    <a href="index.php">Inicio</a>
+    <a href="productos.php">Productos</a>
+    <a href="carrito.php">Carrito</a>
+    <?php if (isset($_SESSION['usuario'])): ?>
+        <span style="margin-left: 20px;">Hola, <?php echo htmlspecialchars($_SESSION['usuario']); ?></span>
+        <a href="logout.php">Cerrar sesión</a>
+    <?php else: ?>
+        <a href="login.php">Login</a>
+    <?php endif; ?>
+</nav>
+
     </header>
 
     <main class="productos">
-        <!-- Simulación de productos. Puedes hacer un bucle PHP aquí -->
+
         <div class="producto">
-            <img src="img/TC/TC1.jpg" alt="Tenis 1">
+            <img src="img/Tenis/T1.jpg" alt="Tenis 1">
             <h2>Nike Blazer mid '77 Royal Blue</h2>
             <p>$2100.00</p>
-            <button>Añadir al carrito <i class="bi bi-cart"></i></button>
+            
         </div>
         <div class="producto">
-            <img src="img/TC/TC2.jpg" alt="Tenis 2">
+            <img src="img/Tenis/T2.jpg" alt="Tenis 2">
             <h2>Adidas Ultraboost</h2>
-            <p>$150.00</p>
-            <button>Añadir al carrito <i class="bi bi-cart"></i></button>
+            <p>$1500.00</p>
+            
         </div>
     </main>
 
@@ -44,13 +50,3 @@ include 'db.php';
     </footer>
 </body>
 </html>
-
-
-<?php
-session_start();
-if (!isset($_SESSION['usuario'])) {
-    echo '<a href="login.html">Iniciar sesión</a>';
-} else {
-    echo 'Hola, ' . $_SESSION['usuario'] . ' | <a href="logout.php">Cerrar sesión</a>';
-}
-?>

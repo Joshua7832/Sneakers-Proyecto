@@ -1,14 +1,14 @@
 <?php
-session_start();
-include 'db.php'; // Asegúrate que esta ruta sea correcta
+session_start(); 
+require_once 'db.php'; 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST['email'];
+    $nombre = $_POST['nombre'];
     $password = $_POST['password'];
 
-    $consulta = "SELECT * FROM usuarios WHERE email = ?";
+    $consulta = "SELECT * FROM usuarios WHERE nombre = ?";
     $stmt = $conn->prepare($consulta);
-    $stmt->bind_param("s", $email);
+    $stmt->bind_param("s", $nombre);
     $stmt->execute();
     $resultado = $stmt->get_result();
     $usuario = $resultado->fetch_assoc();
@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($usuario && password_verify($password, $usuario['password'])) {
         $_SESSION['usuario'] = $usuario['nombre'];
 
-        if (strtolower($usuario['nombre']) === 'admin') {
+        if (strtolower($usuario['nombre']) === 'admin2') {
             header("Location: productos_crud.php");
         } else {
             header("Location: index.php");
@@ -27,6 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="es">
@@ -65,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       font-size: 24px;
     }
 
-    input[type="email"],
+    input[type="text"],
     input[type="password"] {
       width: 100%;
       padding: 12px;
@@ -122,7 +123,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php endif; ?>
     
     <form method="POST" action="">
-      <input type="email" name="email" placeholder="Correo electrónico"  />
+      <input type="text" name="nombre" placeholder="Nombre usuario"  />
       <input type="password" name="password" placeholder="Contraseña" required />
       <button type="submit">Entrar</button>
     </form>

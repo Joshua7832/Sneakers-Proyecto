@@ -120,7 +120,7 @@ if (isset($_SESSION['carrito'])) {
     <div class="productos">
       <?php while($row = mysqli_fetch_assoc($result)): ?>
         <div class="producto">
-          <img src="img/<?php echo $row['imagen']; ?>" alt="<?= $row['nombre'] ?>">
+          <img src="<?php echo $row['imagen']; ?>" alt="<?= $row['nombre'] ?>">
           <h3><?= $row['nombre'] ?></h3>
           <p><?= $row['descripcion'] ?></p>
           <p class="precio">$<?= number_format($row['precio'], 2) ?></p>
@@ -132,11 +132,7 @@ if (isset($_SESSION['carrito'])) {
       <?php endwhile; ?>
     </div>
 
-    <div class="resumen">
-      <p>Productos en carrito: <strong><?= $contador ?></strong></p>
-      <p>Total estimado: <strong>$<?= number_format($total, 2) ?></strong></p>
-      <a href="carrito.php">Ir al carrito</a>
-    </div>
+   
   </div>
 </body>
 </html>
