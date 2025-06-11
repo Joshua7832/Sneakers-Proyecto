@@ -6,7 +6,7 @@ include 'header.php';
 $query = "SELECT * FROM productos";
 $result = mysqli_query($conn, $query);
 
-// Calcular total del carrito desde la sesión
+// Funcion para calcular total del carrito desde la sesión
 $total = 0;
 $contador = 0;
 if (isset($_SESSION['carrito'])) {

@@ -10,6 +10,7 @@ include 'db.php';
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Carrito de Compras</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  
   <style>
     * {
       box-sizing: border-box;
@@ -64,11 +65,26 @@ include 'db.php';
     .btn:hover {
       background-color: #333;
     }
+    .btn-danger {
+      background-color: red;
+    }
+    .btn-danger:hover {
+      background-color: darkred;
+    }
     .actions {
       display: flex;
       justify-content: space-between;
       gap: 1rem;
       margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+    .delete-btn {
+      color: red;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .delete-btn:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -80,9 +96,9 @@ include 'db.php';
     if (!empty($_SESSION['carrito'])) {
       $total = 0;
       echo '<table>';
-      echo '<tr><th>Producto</th><th>Precio</th><th>Cantidad</th><th>Subtotal</th></tr>';
+      echo '<tr><th>Producto</th><th>Precio</th><th>Cantidad</th><th>Subtotal</th><th>Eliminar</th></tr>';
 
-      foreach ($_SESSION['carrito'] as $producto) {
+      foreach ($_SESSION['carrito'] as $id => $producto) {
         $subtotal = $producto['precio'] * $producto['cantidad'];
         $total += $subtotal;
 
@@ -91,6 +107,7 @@ include 'db.php';
         echo '<td>$' . number_format($producto['precio'], 2) . '</td>';
         echo '<td>' . $producto['cantidad'] . '</td>';
         echo '<td>$' . number_format($subtotal, 2) . '</td>';
+        echo '<td><a class="delete-btn" href="eliminar_carrito.php?id=' . $id . '" onclick="return confirm(\'¿Eliminar este producto?\')">Borrar</a></td>';
         echo '</tr>';
       }
 
@@ -100,6 +117,7 @@ include 'db.php';
       echo '<div class="actions">';
       echo '<a href="productos.php" class="btn">Seguir Comprando</a>';
       echo '<a href="procesar_pago.php" class="btn">Finalizar Compra</a>';
+      echo '<a href="vaciar_carrito.php" class="btn btn-danger" onclick="return confirm(\'¿Vaciar todo el carrito?\')">Vaciar Carrito</a>';
       echo '</div>';
     } else {
       echo '<p>Tu carrito está vacío.</p>';
@@ -109,4 +127,5 @@ include 'db.php';
   </div>
 </body>
 </html>
+
 
