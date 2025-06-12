@@ -90,42 +90,51 @@ include 'db.php';
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Tu Carrito</h1>
+  <a href="index.php" class="btn" style="margin-bottom: 20px; display: inline-block;">
+    <i class="bi bi-arrow-left"></i> Volver al inicio
+  </a>
 
-    <?php
-    if (!empty($_SESSION['carrito'])) {
-      $total = 0;
-      echo '<table>';
-      echo '<tr><th>Producto</th><th>Precio</th><th>Cantidad</th><th>Subtotal</th><th>Eliminar</th></tr>';
+  <h1>Tu Carrito</h1>
 
-      foreach ($_SESSION['carrito'] as $id => $producto) {
-        $subtotal = $producto['precio'] * $producto['cantidad'];
-        $total += $subtotal;
+  <?php
+  if (!empty($_SESSION['carrito'])) {
+    $total = 0;
+    echo '<table>';
+    echo '<tr><th>Producto</th><th>Precio</th><th>Cantidad</th><th>Subtotal</th><th>Acciones</th></tr>';
 
-        echo '<tr>';
-        echo '<td>' . htmlspecialchars($producto['nombre']) . '</td>';
-        echo '<td>$' . number_format($producto['precio'], 2) . '</td>';
-        echo '<td>' . $producto['cantidad'] . '</td>';
-        echo '<td>$' . number_format($subtotal, 2) . '</td>';
-        echo '<td><a class="delete-btn" href="eliminar_carrito.php?id=' . $id . '" onclick="return confirm(\'¿Eliminar este producto?\')"><i class="bi bi-trash3"></i></a></td>';
-        echo '</tr>';
-      }
+    foreach ($_SESSION['carrito'] as $id => $producto) {
+      $subtotal = $producto['precio'] * $producto['cantidad'];
+      $total += $subtotal;
 
-      echo '</table>';
-      echo '<div class="total">Total: $' . number_format($total, 2) . '</div>';
-
-      echo '<div class="actions">';
-      echo '<a href="productos.php" class="btn">Seguir Comprando</a>';
-      echo '<a href="procesar_pago.php" class="btn">Finalizar Compra</a>';
-      echo '<a href="vaciar_carrito.php" class="btn btn-danger" onclick="return confirm(\'¿Vaciar todo el carrito?\')">Vaciar Carrito</a>';
-      echo '</div>';
-    } else {
-      echo '<p>Tu carrito está vacío.</p>';
-      echo '<a href="productos.php" class="btn">Ver Productos</a>';
+      echo '<tr>';
+      echo '<td>' . htmlspecialchars($producto['nombre']) . '</td>';
+      echo '<td>$' . number_format($producto['precio'], 2) . '</td>';
+      echo '<td>' . $producto['cantidad'] . '</td>';
+      echo '<td>$' . number_format($subtotal, 2) . '</td>';
+      echo '<td>
+              <a href="actualizar_carrito.php?id=' . $id . '&accion=incrementar" class="btn" style="padding: 4px 10px;">+</a>
+              <a href="actualizar_carrito.php?id=' . $id . '&accion=decrementar" class="btn" style="padding: 4px 10px;">−</a>
+              <a class="delete-btn" href="eliminar_carrito.php?id=' . $id . '" onclick="return confirm(\'¿Eliminar este producto?\')">
+                <i class="bi bi-trash3"></i>
+              </a>
+            </td>';
+      echo '</tr>';
     }
-    ?>
-  </div>
+
+    echo '</table>';
+    echo '<div class="total">Total: $' . number_format($total, 2) . '</div>';
+
+    echo '<div class="actions">';
+    echo '<a href="productos.php" class="btn">Seguir Comprando</a>';
+    echo '<a href="procesar_pago.php" class="btn">Finalizar Compra</a>';
+    echo '<a href="vaciar_carrito.php" class="btn btn-danger" onclick="return confirm(\'¿Vaciar todo el carrito?\')">Vaciar Carrito</a>';
+    echo '</div>';
+  } else {
+    echo '<p>Tu carrito está vacío.</p>';
+    echo '<a href="productos.php" class="btn">Ver Productos</a>';
+  }
+  ?>
+</div>
 </body>
 </html>
 
