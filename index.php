@@ -32,15 +32,15 @@ include 'db.php';
     <main class="productos">
 
         <div class="producto">
-            <img src="img/Tenis/T1.jpg" alt="Tenis 1">
-            <h2>Nike Blazer mid '77 Royal Blue</h2>
-            <p>$2100.00</p>
+            <img src="img/Tenis/T7.jpg" alt="Tenis 1">
+            <h2>Nike Grandstand II</h2>
+            <p>$1799.00</p>
             
         </div>
         <div class="producto">
-            <img src="img/Tenis/T2.jpg" alt="Tenis 2">
-            <h2>Adidas Ultraboost</h2>
-            <p>$1500.00</p>
+            <img src="img/Tenis/T8.jpg" alt="Tenis 2">
+            <h2>Nike Lunar Roam</h2>
+            <p>$2239.00</p>
             
         </div>
     </main>

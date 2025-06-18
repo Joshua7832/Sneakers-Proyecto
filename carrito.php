@@ -12,7 +12,7 @@ include 'db.php';
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
-  <style>
+  <style>  
     * {
       box-sizing: border-box;
       font-family: 'Inter', sans-serif;

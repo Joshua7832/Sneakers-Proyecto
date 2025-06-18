@@ -5,7 +5,7 @@ include 'db.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['producto_id'])) {
     $producto_id = intval($_POST['producto_id']);
 
-    // Obtener datos del producto desde la base de datos
+    // En esta parte puede obtener los datos del producto desde la base de datos
     $query = "SELECT * FROM productos WHERE id = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("i", $producto_id);
@@ -13,16 +13,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['producto_id'])) {
     $result = $stmt->get_result();
 
     if ($producto = $result->fetch_assoc()) {
-        // Inicializar el carrito si no existe
+        // Inicializar el carrito en caso de que no existe
         if (!isset($_SESSION['carrito'])) {
             $_SESSION['carrito'] = [];
         }
 
-        // Si el producto ya está en el carrito, incrementar cantidad
+        // incrementar cantidad del producto en el carrito.
         if (isset($_SESSION['carrito'][$producto_id])) {
             $_SESSION['carrito'][$producto_id]['cantidad']++;
         } else {
-            // Si no está, agregarlo con los datos
+            
             $_SESSION['carrito'][$producto_id] = [
                 'id' => $producto['id'],
                 'nombre' => $producto['nombre'],

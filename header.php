@@ -1,5 +1,4 @@
 <?php
-// Este archivo se puede incluir en varias páginas como encabezado
 ?>
 
 <style>
