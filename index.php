@@ -25,6 +25,22 @@ include 'db.php';
     <?php else: ?>
         <a href="login.php">Login</a>
     <?php endif; ?>
+    <?php if (isset($_SESSION['usuario']) && $_SESSION['usuario'] === 'admin2'): ?>
+    <div style="text-align: center; margin: 20px;">
+        <a href="productos_crud.php" style="
+            display: inline-block;
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: background 0.3s ease, transform 0.2s ease;
+        ">🛠 Ir al CRUD de productos</a>
+    </div>
+<?php endif; ?>
 </nav>
 
     </header>
